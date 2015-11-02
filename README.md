@@ -153,6 +153,58 @@ LOCAL_LDLIBS +=  -llog -ldl
 
 include $(BUILD_SHARED_LIBRARY)
 ```
+## Compile JNI:
+
+```shell
+~/AndroidStudioProjects/OpenCV3-MixedProcessing/app/jni$ ndk-build
+Android NDK: WARNING:/home/cobalt/AndroidStudioProjects/OpenCV3-MixedProcessing/app/jni/Android.mk:mixed_sample: non-system libraries in linker flags: -lopencv_java3    
+Android NDK:     This is likely to result in incorrect builds. Try using LOCAL_STATIC_LIBRARIES    
+Android NDK:     or LOCAL_SHARED_LIBRARIES instead to list the library dependencies of the    
+Android NDK:     current module    
+[armeabi-v7a] Compile++ thumb: mixed_sample <= jni_part.cpp
+[armeabi-v7a] SharedLibrary  : libmixed_sample.so
+/home/cobalt/Android/adt-bundle-linux-x86-20131030/android-ndk-r10d/toolchains/arm-linux-androideabi-4.8/prebuilt/linux-x86/bin/../lib/gcc/arm-linux-androideabi/4.8/../../../../arm-linux-androideabi/bin/ld: warning: hidden symbol '__aeabi_atexit' in /home/cobalt/Android/adt-bundle-linux-x86-20131030/android-ndk-r10d/sources/cxx-stl/gnu-libstdc++/4.8/libs/armeabi-v7a/thumb/libgnustl_static.a(atexit_arm.o) is referenced by DSO /home/cobalt/Android/OpenCV-android-sdk/sdk/native/jni/../libs/armeabi-v7a/libopencv_java3.so
+[armeabi-v7a] Install        : libmixed_sample.so => libs/armeabi-v7a/libmixed_sample.so
+```
+
+##Modify app:build.gradle sourceSets as follows:
+
+```gradle
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "org.opencv.samples.tutorial1.opencv3_camerapreview"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jni.srcDirs = []
+            jniLibs.srcDirs=['libs']
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile project(':libraries:opencv')
+}
+```
 
 
 ## Accept
