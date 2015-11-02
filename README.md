@@ -12,6 +12,8 @@ This project illustrates OpenCV Mixed-signal Processing, i.e Native and Java, in
 
 ![alt tag](https://github.com/DeLaSalleUniversity-Manila/opencvcamerapreviewsample-melvincabatuan/blob/master/OpenCV_001.png)
 
+Note: Project should be 'Mixed-SignalProcessing' not 'CameraPreview'
+
 ![alt tag](https://github.com/DeLaSalleUniversity-Manila/opencvcamerapreviewsample-melvincabatuan/blob/master/OpenCV_002.png)
 
 ![alt tag](https://github.com/DeLaSalleUniversity-Manila/opencvcamerapreviewsample-melvincabatuan/blob/master/OpenCV_003.png)
@@ -153,7 +155,7 @@ LOCAL_LDLIBS +=  -llog -ldl
 
 include $(BUILD_SHARED_LIBRARY)
 ```
-## Compile JNI:
+## Compile JNI with 'ndk-build':
 
 ```shell
 ~/AndroidStudioProjects/OpenCV3-MixedProcessing/app/jni$ ndk-build
