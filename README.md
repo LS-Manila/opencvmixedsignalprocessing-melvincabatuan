@@ -12,7 +12,7 @@ This project illustrates OpenCV Mixed-signal Processing, i.e Native and Java, in
 
 ![alt tag](https://github.com/DeLaSalleUniversity-Manila/opencvcamerapreviewsample-melvincabatuan/blob/master/OpenCV_001.png)
 
-Note: Project should be 'Mixed-SignalProcessing' not 'CameraPreview'
+Note: Project should be 'MixedProcessing' not 'CameraPreview'
 
 ![alt tag](https://github.com/DeLaSalleUniversity-Manila/opencvcamerapreviewsample-melvincabatuan/blob/master/OpenCV_002.png)
 
